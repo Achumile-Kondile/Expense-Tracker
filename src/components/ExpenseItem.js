@@ -1,14 +1,21 @@
 import React from 'react';
+import { Card, Badge } from 'react-bootstrap';
 
 function ExpenseItem({ expense }) {
-  const formatCurrency = (amount) => {
-    return `R${amount.toFixed(2)}`;
-  };
+  const formatCurrency = (amount) => `R${amount.toFixed(2)}`;
 
   return (
-    <div>
-      <p>{expense.description} - {formatCurrency(expense.amount)} on {expense.date}</p>
-    </div>
+    <Card className="mb-3">
+      <Card.Body className="d-flex justify-content-between">
+        <div>
+          <h5>{expense.description}</h5>
+          <p className="text-muted">{expense.date}</p>
+        </div>
+        <div>
+          <Badge bg="primary">{formatCurrency(expense.amount)}</Badge>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import NavBar from './components/NavBar';
 import Header from './components/Header';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
-import './App.css';
-
+import ExpenseSummary from './components/ExpenseSummary';
+import ExpenseChart from './components/ExpenseChart';
+import Footer from './components/Footer';
+import ThemeToggle from './components/ThemeToggle';
 function App() {
   const [expenses, setExpenses] = useState([]);
 
@@ -12,10 +15,17 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div>
+      <NavBar />
       <Header />
-      <ExpenseForm addExpense={addExpense} />
-      <ExpenseList expenses={expenses} />
+      <div className="container mt-4">
+        <ThemeToggle />
+        <ExpenseForm addExpense={addExpense} />
+        <ExpenseSummary expenses={expenses} />
+        <ExpenseChart expenses={expenses} />
+        <ExpenseList expenses={expenses} />
+      </div>
+      <Footer />
     </div>
   );
 }
